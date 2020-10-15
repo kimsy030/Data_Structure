@@ -1,0 +1,32 @@
+#ifndef _STUDENT_H_
+#define _STUDENT_H_
+typedef struct _node 
+{
+    char N;//이름
+    int K,E,M,C,S,R;//국어,영어,수학,전산,총점,석차
+    struct _node *Next;
+}Node;
+
+typedef Node* Ldata;
+
+typedef struct _list{
+    Ldata Head;
+    Ldata Cur;
+    Ldata Before;
+    int NumOfData;
+    int (*comp)(Ldata, Ldata);
+}LinkedList;
+
+typedef LinkedList List;
+
+void PNode(Ldata pnode);
+void SInsert(List* plist, Ldata pdata);
+void InitLIst(List*);
+void LInsert(List*, Ldata);
+int LFirst(List*, Ldata);
+int LNext(List*, Ldata);
+Ldata LRemove(List*);
+void LPrint(List*);
+int LCount(List*);
+void SetSortRule(List*, int(*comp)(Ldata, Ldata));
+#endif
