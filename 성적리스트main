@@ -1,0 +1,25 @@
+#include <stdio.h>
+#include "student.h"
+
+void SInsert(List* plist, Ldata pdata) {
+	Ldata Before = plist->Head;
+	while (Before->Next && plist->comp(pdata, Before->Next)) {
+		Before = Before->Next;
+	}
+	pdata->Next = Before->Next;
+	Before->Next = pdata;
+}
+int WholsPred(Ldata d1, Ldata d2) {
+	if (d1->S > d2->S) return 0; //총점이 큰 것이 앞에 위치
+	else if (d1->S == d2->S) //총점이 같으면
+		if (d1->N < d2->N) return 0;
+		else return 1;
+}
+
+int mian() {
+	char A[10] = { 'I','C','H','A','B','E','J','D','F','G' };
+	int a;
+	Ldata node = (Node*)malloc(sizeof(Node)), rnode;
+	List* MyList = (List*)malloc(sizeof(List));
+	InitList(MyList); //리스트 초기화
+}
